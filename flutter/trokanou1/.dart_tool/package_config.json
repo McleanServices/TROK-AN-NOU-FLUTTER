@@ -38,6 +38,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "ffi",
+      "rootUri": "file:///C:/Users/tyrec/AppData/Local/Pub/Cache/hosted/pub.dev/ffi-2.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
       "name": "flutter",
       "rootUri": "file:///C:/src/flutter/packages/flutter",
       "packageUri": "lib/",
@@ -104,6 +110,54 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "path_provider",
+      "rootUri": "file:///C:/Users/tyrec/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider-2.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "path_provider_android",
+      "rootUri": "file:///C:/Users/tyrec/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_android-2.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "path_provider_foundation",
+      "rootUri": "file:///C:/Users/tyrec/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_foundation-2.3.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "path_provider_linux",
+      "rootUri": "file:///C:/Users/tyrec/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_linux-2.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "path_provider_platform_interface",
+      "rootUri": "file:///C:/Users/tyrec/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_platform_interface-2.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "path_provider_windows",
+      "rootUri": "file:///C:/Users/tyrec/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_windows-2.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "platform",
+      "rootUri": "file:///C:/Users/tyrec/AppData/Local/Pub/Cache/hosted/pub.dev/platform-3.1.4",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "plugin_platform_interface",
+      "rootUri": "file:///C:/Users/tyrec/AppData/Local/Pub/Cache/hosted/pub.dev/plugin_platform_interface-2.1.8",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///C:/src/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -114,6 +168,18 @@
       "rootUri": "file:///C:/Users/tyrec/AppData/Local/Pub/Cache/hosted/pub.dev/source_span-1.10.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
+    },
+    {
+      "name": "sqflite",
+      "rootUri": "file:///C:/Users/tyrec/AppData/Local/Pub/Cache/hosted/pub.dev/sqflite-2.3.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "sqflite_common",
+      "rootUri": "file:///C:/Users/tyrec/AppData/Local/Pub/Cache/hosted/pub.dev/sqflite_common-2.5.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "stack_trace",
@@ -132,6 +198,12 @@
       "rootUri": "file:///C:/Users/tyrec/AppData/Local/Pub/Cache/hosted/pub.dev/string_scanner-1.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
+    },
+    {
+      "name": "synchronized",
+      "rootUri": "file:///C:/Users/tyrec/AppData/Local/Pub/Cache/hosted/pub.dev/synchronized-3.1.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "term_glyph",
@@ -158,13 +230,25 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "win32",
+      "rootUri": "file:///C:/Users/tyrec/AppData/Local/Pub/Cache/hosted/pub.dev/win32-5.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "xdg_directories",
+      "rootUri": "file:///C:/Users/tyrec/AppData/Local/Pub/Cache/hosted/pub.dev/xdg_directories-1.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "trokannou",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-02-20T00:13:17.270246Z",
+  "generated": "2024-02-23T13:33:25.885285Z",
   "generator": "pub",
   "generatorVersion": "3.3.0"
 }

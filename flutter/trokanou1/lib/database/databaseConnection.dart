@@ -13,7 +13,7 @@ class DatabaseConnection {
   }
   Future<void> _createDatabase(Database database, int version) async
   {
-    // String sql = "";
+    String sql = "";
   await database.execute(sql);
   }
 
