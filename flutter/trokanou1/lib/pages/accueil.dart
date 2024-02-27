@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-
-
-
 class Accueil extends StatefulWidget {
   const Accueil({super.key});
 
