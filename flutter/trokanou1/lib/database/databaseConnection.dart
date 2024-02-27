@@ -12,7 +12,10 @@ class DatabaseConnection {
   }
 
   Future<void> _createDatabase(Database database, int version) async {
-    String sql = "";
+    String sqlUsager = "";
+    String sqlTheme = "";
+    String sqlMaterialService = "";
+    String sql = sqlUsager + sqlTheme + sqlMaterialService;
     await database.execute(sql);
   }
 }
