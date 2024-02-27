@@ -1,5 +1,5 @@
 # TROK-AN-NOU-FLUTTER
-tyrece
+Créer une application communautaire permettant de proposer des services entre personnels (membres de la cité scolaire).
 <!-- 
 class Contact{
   int? id;
