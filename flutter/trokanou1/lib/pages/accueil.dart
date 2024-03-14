@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:trokannou/pages/formulaireProduit';
 import 'package:trokannou/pages/usager.dart';
 
-
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
@@ -20,9 +19,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   final List<Widget> _pages = [
-     FormProd(),
-     Usager(),
-
+    FormProd(),
+    Usager(),
   ];
 
   @override
@@ -32,13 +30,13 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.blue,
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: 'Home'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.contact_page), label: 'Contacts'),
-
+              icon: Icon(Icons.home_filled), label: 'Accueil'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Usager'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.add), label: 'Ajouter un produit'),
         ],
         currentIndex: _selectedIndex,
-
         onTap: _navigationBottomBar,
       ),
     );
