@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trokannou/services/usagerService.dart';
+import '../database/repository.dart';
+import '../model/usager.dart';
 
 class Compte extends StatefulWidget {
   const Compte({super.key});
@@ -58,8 +60,7 @@ class _AccueilState extends State<Compte> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => NouvellePage()),
+                          MaterialPageRoute(builder: (context) => ListUSAGER()),
                         );
                       },
                     ),
@@ -210,53 +211,197 @@ class _AccueilState extends State<Compte> {
   }
 }
 
-class NouvellePage extends StatelessWidget {
+class ListUSAGER extends StatefulWidget {
+  const ListUSAGER({super.key});
+
   @override
+  State<ListUSAGER> createState() => _ListUSAGERState();
+}
+
+class _ListUSAGERState extends State<ListUSAGER> {
+  @override
+  late Repository _repository;
+  List<Map<String, dynamic>> _Usager = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _repository = Repository();
+    _loadUsager();
+  }
+
+  void _loadUsager() async {
+    List<Map<String, dynamic>> usager = await _repository.readUsager('USAGER');
+    setState(() {
+      _Usager = usager;
+    });
+  }
+
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Nouvelle Page'),
-      ),
-      body: Container(
-          margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-          color: Colors.cyan,
-          height: 750,
-          width: 450,
-          child: Column(
-            children: [
-              Container(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(50),
-                  child: Image.asset(
-                    "asset/image/image.png",
-                    height: 75,
-                    width: 75,
+    return ListView.builder(
+        itemCount: _Usager.length,
+        itemBuilder: (context, index) {
+          var usager = _Usager[index];
+          return Card(
+            child: ListTile(
+              onTap: null,
+              leading: Column(children: [
+                CircleAvatar(
+                  child: Text(
+                    usager['photo'],
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                 ),
-                margin: EdgeInsets.fromLTRB(0, 80, 0, 0),
+              ]),
+              title: Text(
+                usager['nom'],
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              Container(
-                child: Text('Nom', style: TextStyle(fontSize: 25)),
-                margin: EdgeInsets.fromLTRB(0, 50, 0, 0),
+              subtitle: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    usager['prenom'] ?? '',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                    ),
+                  ),
+                  Text(
+                    usager['addresse'] ?? '',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                    ),
+                  ),
+                  Text(
+                    usager['numero'] ?? '',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                    ),
+                  ),
+                  Text(
+                    usager['mail'] ?? '',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                    ),
+                  ),
+                  Text(
+                    usager['typeUsager'] ?? '',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                ],
               ),
-              Container(
-                child: Text('prenom', style: TextStyle(fontSize: 25)),
-                margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      _deleteFormDialog(context, usager['id']);
+                    },
+                    icon: const Icon(
+                      Icons.delete,
+                      color: Colors.red,
+                    ),
+                  ),
+                ],
               ),
-              Container(
-                child: Text('Téléphone', style: TextStyle(fontSize: 25)),
-                margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
-              ),
-              Container(
-                child: Text('Adresse', style: TextStyle(fontSize: 25)),
-                margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
-              ),
-              Container(
-                child: Text('profession', style: TextStyle(fontSize: 25)),
-                margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
-              ),
-            ],
-          )),
-    );
+            ),
+          );
+        });
   }
 }
+
+
+
+// class _Nouvellepage2State extends StatefulWidget {
+//   const _Nouvellepage2State({super.key});
+
+//   @override
+//   State<_Nouvellepage2State> createState() => __Nouvellepage2StateState();
+// }
+
+// class __Nouvellepage2StateState extends State<_Nouvellepage2State> {
+//   @override
+
+//    late Repository _repository;
+//   List<Map<String, dynamic>> _Usager = [];
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     _repository = Repository();
+//     _loadUsager();
+//   }
+
+//   void _loadUsager() async {
+//     List<Map<String, dynamic>> usagers =
+//         await _repository.readUsager('USAGER');
+//     setState(() {
+//       _Usager = usager;
+//     });
+//   }
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Nouvelle Page'),
+//       ),
+//       body: Container(
+//           margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+//           color: Colors.cyan,
+//           height: 750,
+//           width: 450,
+//           child: Column(
+//             children: [
+//               Container(
+                
+//               ),
+//               Container(
+//                 child: ClipRRect(
+//                   borderRadius: BorderRadius.circular(50),
+//                   child: Image.asset(
+//                     "asset/image/image.png",
+//                     height: 75,
+//                     width: 75,
+//                   ),
+//                 ),
+//                 margin: EdgeInsets.fromLTRB(0, 80, 0, 0),
+//               ),
+//               Container(
+//                 child: Text('Nom', style: TextStyle(fontSize: 25)),
+//                 margin: EdgeInsets.fromLTRB(0, 50, 0, 0),
+//               ),
+//               Container(
+//                 child: Text('prenom', style: TextStyle(fontSize: 25)),
+//                 margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+//               ),
+//               Container(
+//                 child: Text('Téléphone', style: TextStyle(fontSize: 25)),
+//                 margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+//               ),
+//               Container(
+//                 child: Text('Adresse', style: TextStyle(fontSize: 25)),
+//                 margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+//               ),
+//               Container(
+//                 child: Text('profession', style: TextStyle(fontSize: 25)),
+//                 margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+//               ),
+//               ButtonBar()
+              
+//             ],
+//           )),
+//     );
+//   }
+// }

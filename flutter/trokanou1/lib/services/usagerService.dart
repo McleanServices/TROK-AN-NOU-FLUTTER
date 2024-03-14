@@ -1,17 +1,13 @@
-import 'package:trokannou/database/repository.dart';
-import 'package:trokannou/model/usager.dart';
+import '../database/repository.dart';
+import '../model/usager.dart';
 
-class UsagerService {
+class usagerService {
   late Repository _repository;
-  UsagerService() {
+  usagerService() {
     _repository = Repository();
   }
 
   saveUsager(Usager usager) async {
     return await _repository.insertUsager('USAGER', usager.usagerMap());
-  }
-
-  readAllUsager() async {
-    return await _repository.readUsager('USAGER');
   }
 }
