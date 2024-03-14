@@ -1,0 +1,160 @@
+import 'package:flutter/material.dart';
+
+import '../Database/repository.dart';
+
+
+
+
+class MyContactsPage extends StatefulWidget {
+  @override
+  _MyContactsPageState createState() => _MyContactsPageState();
+}
+
+class _MyContactsPageState extends State<MyContactsPage> {
+  late Repository _repository;
+  List<Map<String, dynamic>> _contacts = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _repository = Repository();
+    _loadContacts();
+  }
+
+  void _loadContacts() async {
+    List<Map<String, dynamic>> contacts = await _repository.readContact('contacts');
+    setState(() {
+      _contacts = contacts;
+    });
+  }
+
+
+  _deleteFormDialog(BuildContext context, contactId) {
+    return showDialog(
+        context: context,
+        builder: (param) {
+          return AlertDialog(
+            title: const Text(
+              'Confirmer la suppression',
+              style: TextStyle(color: Colors.black, fontSize: 20),
+            ),
+            actions: [
+              TextButton(
+                style: TextButton.styleFrom(
+                    foregroundColor: Colors.white, backgroundColor: Colors.red),
+                onPressed: () async {
+                  var result = await _repository.deleteContact('contacts', contactId);
+                  if (result != null) {
+                    Navigator.pop(context);
+
+                  }
+                },
+                child: const Text('Ok'),
+              ),
+              TextButton(
+                  style: TextButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.blue,
+                    textStyle: const TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text('Annuler'))
+            ],
+          );
+        });
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: _contacts.length,
+        itemBuilder: (context, index) {
+          var contact = _contacts[index];
+          return Card(
+            child: ListTile(
+              onTap: null,
+              leading: Column(children: [
+                  CircleAvatar(
+                    child: Text(
+                      contact['name'],
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
+
+                  ),
+
+              ]),
+              title: Text(
+                contact['name'],
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              subtitle: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                contact['phone'] ?? '',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                    ),
+                  ),
+                  Text(
+                    contact['email'] ?? '',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+
+                ],
+              ),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      _deleteFormDialog(context, contact['id']);
+
+                    },
+                    icon: const Icon(
+                      Icons.delete,
+                      color: Colors.red,
+                    ),
+                  ),
+                ],
+              ),
+
+
+              ),
+
+          );
+        }
+    );
+  }
+}
+
+
+//
+// ListView.builder(
+// itemCount: _contacts.length,
+// itemBuilder: (context, index) {
+// var contact = _contacts[index];
+// return
+// Text(contact['name'], style: TextStyle( fontSize: 50 ), );
+//
+//
+//
+// },
+//
+//
+// );
