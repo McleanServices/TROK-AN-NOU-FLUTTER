@@ -1,16 +1,4 @@
-import 'package:flutter/material.dart';
 
-import '../Database/repository.dart';
-
-
-
-
-class MyContactsPage extends StatefulWidget {
-  @override
-  _MyContactsPageState createState() => _MyContactsPageState();
-}
-
-class _MyContactsPageState extends State<MyContactsPage> {
   late Repository _repository;
   List<Map<String, dynamic>> _contacts = [];
 
@@ -27,6 +15,9 @@ class _MyContactsPageState extends State<MyContactsPage> {
       _contacts = contacts;
     });
   }
+
+
+
 
 
   _deleteFormDialog(BuildContext context, contactId) {
