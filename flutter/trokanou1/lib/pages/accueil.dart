@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:trokannou/pages/formulaireProduit';
 import 'package:trokannou/pages/usager.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -19,7 +18,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   final List<Widget> _pages = [
-    FormProd(),
+    Usager(),
     Usager(),
   ];
 
