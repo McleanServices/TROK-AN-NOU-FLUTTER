@@ -44,6 +44,12 @@
       "languageVersion": "3.3"
     },
     {
+      "name": "file_picker",
+      "rootUri": "file:///C:/Users/971cy/AppData/Local/Pub/Cache/hosted/pub.dev/file_picker-6.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "flutter",
       "rootUri": "file:///C:/src/flutter/packages/flutter",
       "packageUri": "lib/",
@@ -56,8 +62,20 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "flutter_plugin_android_lifecycle",
+      "rootUri": "file:///C:/Users/971cy/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.17",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///C:/src/flutter/packages/flutter_test",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "flutter_web_plugins",
+      "rootUri": "file:///C:/src/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -102,6 +120,12 @@
       "rootUri": "file:///C:/Users/971cy/AppData/Local/Pub/Cache/hosted/pub.dev/meta-1.11.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "open_file",
+      "rootUri": "file:///C:/Users/971cy/AppData/Local/Pub/Cache/hosted/pub.dev/open_file-3.3.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "path",
@@ -248,7 +272,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-03-12T12:54:22.918612Z",
+  "generated": "2024-03-15T13:41:21.590606Z",
   "generator": "pub",
   "generatorVersion": "3.3.0"
 }
