@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'pages/accueil.dart';
-
+import 'pages/navbarPages.dart';
 void main() {
   runApp(const MainApp());
 }
@@ -12,7 +11,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {  
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),  
+      home: Navigation(),  
     );
   }
 }
