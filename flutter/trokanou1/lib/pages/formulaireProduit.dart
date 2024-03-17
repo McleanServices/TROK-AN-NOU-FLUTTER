@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
+import 'package:trokannou/database/repository.dart';
 
 class FormProd extends StatefulWidget {
   @override
@@ -8,11 +8,22 @@ class FormProd extends StatefulWidget {
 }
 
 class _FormProdState extends State<FormProd> {
+  final TextEditingController _nomproduitcontroller = TextEditingController();
+  final TextEditingController _descriptioncontroller = TextEditingController();
+  final TextEditingController _typeproduitcontroller = TextEditingController();
+
+  @override
+  void dispose() {
+    _nomproduitcontroller.dispose();
+    _descriptioncontroller.dispose();
+    _typeproduitcontroller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:
-      SingleChildScrollView(
+        body: SingleChildScrollView(
       child: Column(
         children: <Widget>[
           Center(
@@ -57,6 +68,7 @@ class _FormProdState extends State<FormProd> {
           Container(
             width: 350,
             child: TextField(
+              controller: _nomproduitcontroller,
               maxLength: 20,
               decoration: InputDecoration(
                 border: null,
@@ -67,6 +79,7 @@ class _FormProdState extends State<FormProd> {
           Container(
             width: 350,
             child: TextField(
+              controller: _descriptioncontroller,
               maxLength: 50,
               decoration: InputDecoration(
                 border: null,
@@ -122,12 +135,25 @@ class _FormProdState extends State<FormProd> {
               height: 200,
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: ElevatedButton(
+              onPressed: () {
+                var produitData = {
+                  'nom': _nomproduitcontroller.text,
+                  'description': _descriptioncontroller.text,
+                };
+                var repository = Repository();
+                repository.insertUsager('materielService', produitData);
+              },
+              child: Text('Ajouter'),
+            ),
+          ),
         ],
       ),
     )
 
-
-      // Add your widget tree here
-    );
+        // Add your widget tree here
+        );
   }
 }

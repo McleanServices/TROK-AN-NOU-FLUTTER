@@ -13,9 +13,9 @@ class DatabaseConnection {
   }
   Future<void> _createDatabase(Database database, int version) async
   {
-    String sqlUsager = "";
-    String sqlTheme = "";
-    String sqlmaterielService = "";
+    String sqlUsager = "CREATE TABLE usager (id INTEGER PRIMARY KEY, nom TEXT, prenom TEXT, email TEXT, telephone TEXT, dateAjout TEXT, dateModification TEXT);";
+    String sqlTheme = "CREATE TABLE theme (id INTEGER PRIMARY KEY, nom TEXT, description TEXT, dateAjout TEXT, dateModification TEXT);";
+    String sqlmaterielService = "CREATE TABLE materielService (id INTEGER PRIMARY KEY, nom TEXT, description TEXT, prix REAL, dateAjout TEXT, dateModification TEXT, usagerId INTEGER, themeId INTEGER, FOREIGN KEY (usagerId) REFERENCES usager(id), FOREIGN KEY (themeId) REFERENCES theme(id));  ";
     String sql = sqlUsager + sqlTheme + sqlmaterielService;
   await database.execute(sql);
   }
