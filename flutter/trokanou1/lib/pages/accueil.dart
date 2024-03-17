@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:trokannou/database/repository.dart';
-import 'package:trokannou/services/materielService.dart';
 
 class Accueil extends StatefulWidget {
   const Accueil({super.key});
