@@ -18,8 +18,8 @@ class DatabaseConnection {
         "CREATE TABLE theme(id INTEGER PRIMARY KEY, nom TEXT, description TEXT, dateAjout TEXT, dateModification TEXT);";
     String sqlmaterielService =
         "CREATE TABLE materielService(id INTEGER PRIMARY KEY, nom TEXT, description TEXT, prix REAL, dateAjout TEXT, dateModification TEXT, usagerId INTEGER, themeId INTEGER);";
+    await database.execute(sqlmaterielService);
     await database.execute(sqlUsager);
     await database.execute(sqlTheme);
-    await database.execute(sqlmaterielService);
   }
 }
