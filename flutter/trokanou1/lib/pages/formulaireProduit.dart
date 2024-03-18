@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:trokannou/database/repository.dart';
+import 'pages/formulaireProduit.dart';
 
 class FormProd extends StatefulWidget {
   @override

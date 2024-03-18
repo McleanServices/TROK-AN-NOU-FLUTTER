@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:trokannou/database/repository.dart';
+import 'pages/formulaireProduit.dart';
 
 class Usager extends StatefulWidget {
   const Usager({super.key});
@@ -209,53 +212,117 @@ class _UsagerState extends State<Usager> {
   }
 }
 
-class NouvellePage extends StatelessWidget {
+class NouvellePage extends StatefulWidget {
+  @override
+  _NouvellePageState createState() => _NouvellePageState();
+}
+
+class _NouvellePageState extends State<NouvellePage> {
+  final TextEditingController _nomcontroller = TextEditingController();
+  final TextEditingController _prenomcontroller = TextEditingController();
+  final TextEditingController _telephonecontroller = TextEditingController();
+  final TextEditingController _adressecontroller = TextEditingController();
+  final TextEditingController _professioncontroller = TextEditingController();
+
+  @override
+  void dispose() {
+    _nomcontroller.dispose();
+    _prenomcontroller.dispose();
+    _telephonecontroller.dispose();
+    _adressecontroller.dispose();
+    _professioncontroller.dispose();
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Nouvelle Page'),
-      ),
-      body: Container(
-          margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-          color: Colors.cyan,
-          height: 750,
-          width: 450,
-          child: Column(
-            children: [
-              Container(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(50),
-                  child: Image.asset(
-                    "asset/image/image.png",
-                    height: 75,
-                    width: 75,
-                  ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Center(
+              child: Image(
+                image: AssetImage('assets/image/logo.png'),
+                width: 200,
+                height: 100,
+              ),
+            ),
+            Container(
+              width: 350,
+              child: TextField(
+                controller: _nomcontroller,
+                maxLength: 50,
+                decoration: InputDecoration(
+                  border: null,
+                  labelText: 'Nom :',
                 ),
-                margin: EdgeInsets.fromLTRB(0, 80, 0, 0),
               ),
-              Container(
-                child: Text('Nom', style: TextStyle(fontSize: 25)),
-                margin: EdgeInsets.fromLTRB(0, 50, 0, 0),
+            ),
+            Container(
+              width: 350,
+              child: TextField(
+                controller: _prenomcontroller,
+                maxLength: 50,
+                decoration: InputDecoration(
+                  border: null,
+                  labelText: 'Prénom :',
+                ),
               ),
-              Container(
-                child: Text('prenom', style: TextStyle(fontSize: 25)),
-                margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+            ),
+            Container(
+              width: 350,
+              child: TextField(
+                controller: _telephonecontroller,
+                maxLength: 50,
+                decoration: InputDecoration(
+                  border: null,
+                  labelText: 'Téléphone :',
+                ),
               ),
-              Container(
-                child: Text('Téléphone', style: TextStyle(fontSize: 25)),
-                margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+            ),
+            Container(
+              width: 350,
+              child: TextField(
+                controller: _adressecontroller,
+                maxLength: 50,
+                decoration: InputDecoration(
+                  border: null,
+                  labelText: 'Adresse :',
+                ),
               ),
-              Container(
-                child: Text('Adresse', style: TextStyle(fontSize: 25)),
-                margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+            ),
+            Container(
+              width: 350,
+              child: TextField(
+                controller: _professioncontroller,
+                maxLength: 50,
+                decoration: InputDecoration(
+                  border: null,
+                  labelText: 'Profession :',
+                ),
               ),
-              Container(
-                child: Text('profession', style: TextStyle(fontSize: 25)),
-                margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  var produitData = {
+                    'Nom': _nomcontroller.text,
+                    'Prénom': _prenomcontroller.text,
+                    'Téléphone': _telephonecontroller,
+                    'Adresse': _adressecontroller,
+                    'Profession': _professioncontroller
+                  };
+                  var repository = Repository();
+                  repository.insertUsager('materielService', produitData);
+                },
+                child: Text('Ajouter'),
               ),
-            ],
-          )),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
