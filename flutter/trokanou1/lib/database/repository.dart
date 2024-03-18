@@ -34,4 +34,14 @@ class Repository {
       table,
     );
   }
+
+  updateUsager(String table, data) async {
+    final connection = await database;
+    return await connection?.update(
+      table,
+      data,
+      where: 'idproduit=?',
+      whereArgs: [data['idproduit']],
+    );
+  }
 }
