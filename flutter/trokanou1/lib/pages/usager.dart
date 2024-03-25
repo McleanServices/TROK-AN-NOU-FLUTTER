@@ -315,7 +315,7 @@ class _NouvellePageState extends State<NouvellePage> {
                     'Profession': _professioncontroller
                   };
                   var repository = Repository();
-                  repository.insertUsager('materielService', produitData);
+                  repository.insertUsager('usager', produitData);
                 },
                 child: Text('Ajouter'),
               ),
